@@ -49,6 +49,13 @@ function candidatesReducer(state: State, action: Action) {
       }
     }
 
+    case CandidatesActionKind.ADD: {
+      return {
+        ...state,
+        candidates: state.candidates.concat(action.payload)
+      }
+    }
+
     default: {
       throw new Error(`Unhandled action type: ${action.type}`)
     }

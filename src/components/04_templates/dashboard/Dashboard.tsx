@@ -24,11 +24,15 @@ function Dashboard() {
   }, [])
 
   return (
-    <Box bg="background.primary" h="100vh" p={4} w="100%">
+    <Box bg="background.primary" h="100vh" overflow="hidden" p={4} w="100%">
       <Center mb={8}>
         <img alt="Softvision" src={logo} width={320} />
       </Center>
-      <Grid gap={6} templateColumns={`repeat(${columns.length}, 1fr)`}>
+      <Grid
+        gap={6}
+        overflowX="auto"
+        templateColumns={`repeat(${columns.length}, 1fr)`}
+      >
         {Boolean(columns.length) &&
           columns.map(column => {
             const candidates: ICandidate[] = state.candidates.filter(

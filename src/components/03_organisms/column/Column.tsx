@@ -1,6 +1,7 @@
 import { VStack, Heading, Text, Button } from '@chakra-ui/react'
 import { ICandidate } from '@feature/candidate'
 import { IColumn } from '@feature/column'
+import CardNew from 'components/02_molecules/card-new/CardNew'
 import Card from 'components/02_molecules/card/Card'
 import React from 'react'
 
@@ -9,11 +10,14 @@ type Props = IColumn & {
 }
 
 const Column: React.FC<Props> = ({ id, title, initial, candidates }) => {
+  const [addingCandidate, setAddingCandidate] = React.useState(false)
+
   return (
     <VStack
       alignItems="center"
       bg="background.secondary"
       borderRadius="lg"
+      minW={250}
       p={4}
       spacing={4}
     >
@@ -25,7 +29,12 @@ const Column: React.FC<Props> = ({ id, title, initial, candidates }) => {
       ) : (
         candidates.map(candidate => <Card key={candidate.id} {...candidate} />)
       )}
-      {initial && <Button colorScheme="teal">Agregar Candidato </Button>}
+      {addingCandidate && <CardNew setAddingCandidate={setAddingCandidate} />}
+      {initial && !addingCandidate && (
+        <Button colorScheme="teal" onClick={() => setAddingCandidate(true)}>
+          Agregar Candidato{' '}
+        </Button>
+      )}
     </VStack>
   )
 }
