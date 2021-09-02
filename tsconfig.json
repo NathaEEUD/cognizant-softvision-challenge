@@ -13,7 +13,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": "src",
+    "paths": {
+      "@assets/*": ["assets/*"],
+      "@api/*": ["api/*"],
+      "@feature/*": ["feature/*"],
+      "@organisms/*": ["components/03_organisms/*"],
+      "@templates/*": ["components/04_templates/*"]
+    },
   },
   "include": ["./src"]
 }
