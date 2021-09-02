@@ -1,7 +1,8 @@
-import {Candidate} from "../types/candidate";
+import { ICandidate } from '@feature/candidate'
+import { candidates } from '@feature/candidate/config'
 
 export default {
   candidates: {
-    list: (): Promise<Candidate[]> => Promise.resolve([]),
-  },
-};
+    list: (): Promise<ICandidate[]> => Promise.resolve(candidates)
+  }
+}
